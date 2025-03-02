@@ -53,7 +53,7 @@ export default function Navbar() {
     <div className= {` hidden w-full absolute md:block md:relative md:top-0 top-[56px]  left-0  md:w-auto`} id="navbar-default">
    {Token ?   
    <>
-   <ul className={   ` font-xl  bg-[rgb(242,242,248)] md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ${openButton ? 'block' : 'hidden'} `}>
+   <ul className={   ` font-xl  bg-[rgb(242,242,248)] md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ${openButton ? 'visible' : 'hidden'} `}>
         <li className='pb-2'>
           <NavLink to={''} className="   text-gray-900   " aria-current="page">Home</NavLink>
         </li>
