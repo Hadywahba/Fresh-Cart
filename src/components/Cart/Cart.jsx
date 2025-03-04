@@ -27,11 +27,7 @@ async function updateItems(id , count){
 
 
 
-useEffect(() => {
- 
 
- 
-}, [productCart])
 
   return (
     //totalCartPrice

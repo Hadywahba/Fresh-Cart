@@ -51,7 +51,7 @@ let{wishlist , wishlistColor ,removeWishlist ,addToWishlist}=useContext(Wishlist
 
             <div className='container mx-auto flex-grow px-8 py-26 sm:py-12'>
                
-               {wishlist.length!=0 ?   <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-24 pb-20 mt-44  md:mt-20 pt-50 px-4 md:px-0  ">
+               {wishlist?.length!=0 ?   <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4  gap-24 pb-20 mt-44  md:mt-20 pt-50 px-4 md:px-0  ">
  {wishlist?.map((item=> {
   const favourite = wishlistColor(item.id)
 

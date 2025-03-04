@@ -23,7 +23,7 @@ export default function Login() {
   };
   // const maskedPassword = showPassword ? password : '*'.repeat(password.length);
   
-  let {setToken}=useContext(Tokencontext)
+  const {setToken}=useContext(Tokencontext)
 const navigate =useNavigate()
   const initialValues={
     email:'',
@@ -46,7 +46,7 @@ try {
   setLoginApi(true)
   let{data}= await axios.post(`https://ecommerce.routemisr.com/api/v1/auth/signin`,values) 
   localStorage.setItem("getToken",data.token )
-  setToken(data.token )
+  setToken(data.token)
 console.log(data.token)
 if(data.message=="success"){
   toast("Welcome" ,{theme:'dark', type:'success' , position:'top-center' ,autoClose: 3000,

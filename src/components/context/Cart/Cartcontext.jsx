@@ -1,7 +1,8 @@
 import axios from "axios"
-import { useEffect, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { createContext } from "react"
 import { toast } from "react-toastify"
+import { Tokencontext } from "../Tokencontext"
 
 export let Cartcontext=createContext()
 export default function CartcontextProvider(props) {
@@ -10,10 +11,11 @@ export default function CartcontextProvider(props) {
   let[totalPrice , setTotalPrice]=useState(0)
   let[isloading , setisloading]=useState(false)
   let[cartId , setcartId]=useState([])
+ const {token}=useContext(Tokencontext)
 const api_URL="https://ecommerce.routemisr.com/api/v1/cart"
 const API_UPDATE = "https://ecommerce.routemisr.com/api/v1/cart/6428ebc6dc1175abc65ca0b9"
 const headers={
-  token : localStorage.getItem("getToken")
+  token 
 }
 
 async function addProductTocart(productId){
@@ -23,12 +25,11 @@ async function addProductTocart(productId){
   let{data}=await axios.post(api_URL,{productId},{headers})
   setisloading(false)
   setCartCount(data.numOfCartItems)
-
+  setProductCart(data)
   setTotalPrice(data.totalCartPrice)
-  
-
   return data 
  
+
  } catch (error) {
   setisloading(false)
   console.log(error)
@@ -105,9 +106,9 @@ async function updateProduct(id , count){
 
 useEffect(() => {
   
-  getUserCart()
+  token &&getUserCart()
 
-}, [getUserCart])
+}, [token ,getUserCart])
 
 
   return (

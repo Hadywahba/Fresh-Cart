@@ -3,11 +3,14 @@ export let WishlistContext=createContext()
 import React from 'react'
 import { Cartcontext } from "../Cart/Cartcontext";
 import axios from "axios";
+import { Tokencontext } from "../Tokencontext";
 
 export default function WishlistContextProvider(props) {
   let[wishlist , setwishlist]=useState([])
+  let[WishlistCount , setWishlistCount]=useState(0)
+   const {token}=useContext(Tokencontext)
 const headers={
-    token : localStorage.getItem("getToken")
+    token 
   }
 
     // Get wishlist
@@ -15,7 +18,13 @@ const headers={
     try {
       let {data}= await axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist` , {headers})
       setwishlist(data?.data || [])
+      console.log(data)
       localStorage.setItem('wishlist' , JSON.stringify(data?.data || [] ))
+      if(data.status ="success"){
+        setWishlistCount(data.count)
+        console.log(data.count
+)
+      }
     } catch (error) {
       
     }
@@ -54,14 +63,11 @@ const headers={
   
 
 useEffect(() => {
-  const favheart = localStorage.getItem('wishlist')
-  if(favheart){
-    setwishlist(JSON.parse(favheart))
-  }else{
-    getWishlist()
-  }
+ 
+   token && getWishlist()
   
-}, [])
+  
+}, [token ,getWishlist ])
 
 
 
@@ -69,7 +75,7 @@ useEffect(() => {
 
 
   return (
-    <WishlistContext.Provider value={{removeWishlist , addToWishlist , getWishlist ,wishlistColor , wishlist  }}>
+    <WishlistContext.Provider value={{removeWishlist ,WishlistCount , addToWishlist , getWishlist ,wishlistColor , wishlist  }}>
 {props.children}
     </WishlistContext.Provider>
   )

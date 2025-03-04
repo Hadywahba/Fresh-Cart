@@ -19,8 +19,8 @@ export default function RecentProduct(props) {
   let [isload, setisload] = useState(false)
   let { addProductTocart } = useContext(Cartcontext)
   let [loadingProduct, setIsLoadingProduct] = useState(false)
-  let { wishlist } = useContext(WishlistContext)
-  let{Token}=useContext(Tokencontext)
+
+  let{token}=useContext(Tokencontext)
   // console.log(wishlist)
 
 
@@ -72,13 +72,13 @@ console.log(error)
 
 
   useEffect(() => {
-    if(Token){
+   
       getData()
-    }
+  
   
 
 
-  }, [defaultpage])
+  }, [defaultpage , ])
 
   return (
 

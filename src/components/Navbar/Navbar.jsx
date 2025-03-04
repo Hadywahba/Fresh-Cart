@@ -10,14 +10,16 @@ import Brands from '../Brands/Brands'
 import logo from '../../assets/images/freshcart-logo.svg'
 import { Tokencontext } from '../context/Tokencontext'
 import { Cartcontext } from '../context/Cart/Cartcontext'
+import { WishlistContext } from '../context/Wishlist/Wishlistcontext'
 
 
 export default function Navbar() {
-  let {Token , setToken}=useContext(Tokencontext)
+  let {token , setToken}=useContext(Tokencontext)
   let navigate = useNavigate()
   let[openButton , setopenButton]=useState(false)
   let[closeButton , setcloseButton]=useState(true)
   let{cartCount}=useContext(Cartcontext)
+  let{WishlistCount}=useContext(WishlistContext)
   function changeSign(){
     localStorage.removeItem("getToken");
     setToken(null)
@@ -51,9 +53,9 @@ export default function Navbar() {
       <img onClick={goto} className=' w-[80px]  md:w-[150px]' src={logo} alt="" />
     </a>
     <div className= {` hidden w-full absolute md:block md:relative md:top-0 top-[56px]  left-0  md:w-auto`} id="navbar-default">
-   {Token ?   
+   {token ?   
    <>
-   <ul className={   ` font-xl  bg-[rgb(242,242,248)] md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ${openButton ? 'visible' : 'hidden'} `}>
+   <ul className={   ` font-xl  bg-[rgb(242,242,248)] md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0 ${openButton ? 'block' : 'hidden'} `}>
         <li className='pb-2'>
           <NavLink to={''} className="   text-gray-900   " aria-current="page">Home</NavLink>
         </li>
@@ -75,11 +77,13 @@ export default function Navbar() {
 
 
 <ul className=' grow justify-end  flex gap-4 font-xl pe-3  '>
-  {Token ? 
+  {token ? 
   
   <>
    <li>
-          <span onClick={gotoWishlist}  className="block  text-gray-900    "><i class="fa-solid text-red-600 cursor-pointer text-lg fa-heart"></i></span>
+          <span onClick={gotoWishlist}  className="block relative cursor-pointer  text-gray-900    "><i class="fa-solid text-red-600 cursor-pointer text-lg fa-heart"></i>
+          {WishlistCount ==0 ? '' :  <div className="absolute inline-flex items-center  justify-center w-5 h-5 text-xs  text-white  bg-red-500 border-2 border-white rounded-full -top-3 -end-3 dark:border-gray-900">{WishlistCount}</div>}
+          </span>
         </li>
  
    <li>
@@ -112,7 +116,7 @@ export default function Navbar() {
 
 
 
-{Token ? <button onClick={toggleButton} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
+{token ? <button onClick={toggleButton} data-collapse-toggle="navbar-default" type="button" className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
   <span className="sr-only">Open main menu</span>
   <svg className="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h15M1 7h15M1 13h15" />

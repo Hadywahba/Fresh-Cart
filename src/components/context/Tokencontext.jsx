@@ -4,11 +4,11 @@ export let Tokencontext = createContext()
 
 export default function TokencontextProvider(props) {
 
-    const [Token , setToken] = useState(null)
+    const [token , setToken] = useState(null)
   return (
     <>
  
-<Tokencontext.Provider value={{Token , setToken}}>
+<Tokencontext.Provider value={{token , setToken}}>
     {props.children}
 </Tokencontext.Provider>
   
