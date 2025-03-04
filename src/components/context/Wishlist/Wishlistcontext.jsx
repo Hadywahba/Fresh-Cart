@@ -18,12 +18,12 @@ const headers={
     try {
       let {data}= await axios.get(`https://ecommerce.routemisr.com/api/v1/wishlist` , {headers})
       setwishlist(data?.data || [])
-      console.log(data)
+     
       localStorage.setItem('wishlist' , JSON.stringify(data?.data || [] ))
       if(data.status ="success"){
         setWishlistCount(data.count)
-        console.log(data.count
-)
+     
+
       }
     } catch (error) {
       
