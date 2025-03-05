@@ -5,11 +5,13 @@ export let OrderContext=createContext()
 import React from 'react'
 import { Cartcontext } from "../Cart/Cartcontext";
 import { jwtDecode } from "jwt-decode";
+import { Tokencontext } from "../Tokencontext";
 export default function OrderContexProvider(props) {
+    const {token}=useContext(Tokencontext)
 let{cartId}=useContext(Cartcontext)
 
 const headers={
-    token:localStorage.getItem("getToken")
+    token
 }
 
    async function payCash(shippingAddress){

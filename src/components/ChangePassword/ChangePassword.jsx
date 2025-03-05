@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect } from 'react'
 import * as Yup from 'yup'
@@ -6,12 +6,14 @@ import { useFormik } from 'formik'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { Tokencontext } from '../context/Tokencontext'
 export default function ChangePassword() {
  let [loading , setloading]=useState(false)
   const [showPassword, setShowPassword] = useState(true);
  const navigate =useNavigate()
+  const {token}=useContext(Tokencontext)
  const headers={
-  token : localStorage.getItem("getToken")
+  token 
 }
    async function newPassword(values){
 try {
