@@ -96,7 +96,7 @@ export default function ProductDetails() {
     </div> 
  <div className='container mx-auto flex-grow px-8 '>
  
- <h2 className=' text-3xl sm:text-4xl font-bold my-7  py-12 text-main  px-3'>Related Product</h2>
+ <h2 className=' text-2xl sm:text-4xl font-bold my-7  py-12 text-main  px-3'>Related Product</h2>
  <RelatedProduct categoryId={categoryId}/>
  </div>
    </>
