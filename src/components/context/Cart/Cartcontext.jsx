@@ -29,10 +29,13 @@ async function addProductTocart(productId){
   setTotalPrice(data.totalCartPrice)
   return data 
  
-
+  
+ 
  } catch (error) {
   setisloading(false)
   console.log(error)
+  toast(" you are not login , please login", { theme: 'dark', type: 'success', position: 'bottom-right' });
+  // navigate("/Login")
  }
 }
 

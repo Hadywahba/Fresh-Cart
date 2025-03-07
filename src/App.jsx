@@ -44,7 +44,7 @@ useEffect(() => {
 
  const router= createBrowserRouter([
   {path: "" , element: <Layout/> , children :[
-    {index : true , element: <ProtectRoutes><Home/></ProtectRoutes>},
+    {index : true , element: <Home/>},
     {path:'Categories' , element:<ProtectRoutes><Categories/></ProtectRoutes>},
     {path:'Cart' , element:<ProtectRoutes><Cart/></ProtectRoutes>},
     {path:'Brands' , element:<ProtectRoutes><Brands/></ProtectRoutes>},

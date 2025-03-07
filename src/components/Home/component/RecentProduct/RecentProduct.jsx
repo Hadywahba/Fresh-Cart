@@ -10,6 +10,7 @@ import { WishlistContext } from '../../../context/Wishlist/Wishlistcontext'
 import Products from '../../../Products/Products'
 import ReactPaginate from 'react-paginate'
 import { Tokencontext } from '../../../context/Tokencontext'
+import { useNavigate } from 'react-router-dom'
 
 
 export default function RecentProduct(props) {
@@ -19,7 +20,7 @@ export default function RecentProduct(props) {
   let [isload, setisload] = useState(false)
   let { addProductTocart } = useContext(Cartcontext)
   let [loadingProduct, setIsLoadingProduct] = useState(false)
-
+const navigate =useNavigate()
   let{token}=useContext(Tokencontext)
   // console.log(wishlist)
 
@@ -30,7 +31,7 @@ export default function RecentProduct(props) {
   }
 
   async function addProduct(id) {
-    try {
+    
       setIsLoadingProduct(true)
       let data = await addProductTocart(id)
       console.log(data.cartId)
@@ -42,14 +43,7 @@ export default function RecentProduct(props) {
 
         toast("error", { theme: 'dark', type: 'success', position: 'bottom-right' });
       }
-    } catch (error) {
-      console.log(data)
-    }
-    finally {
-      setIsLoadingProduct(false)
-    }
-
-
+   
   }
 
   function getData() {
