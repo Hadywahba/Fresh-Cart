@@ -56,17 +56,17 @@ export default function Navbar() {
    {token ?   
    <>
    <ul className={   ` font-xl  bg-[rgb(242,242,248)] md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  `}>
-        <li className='pb-2'>
+        <li onClick={()=>setopenButton(false)} className='pb-2'>
           <NavLink to={''} className="   text-gray-900   " aria-current="page">Home</NavLink>
         </li>
        
-        <li className='pb-2'>
+        <li onClick={()=>setopenButton(false)} className='pb-2'>
           <NavLink to={'Products'} className="   text-gray-900   ">Products</NavLink>
         </li>
-        <li className='pb-2'>
+        <li onClick={()=>setopenButton(false)} className='pb-2'>
           <NavLink to={'Categories'} className="   text-gray-900  ">Categories</NavLink>
         </li>
-        <li className='pb-2'>
+        <li onClick={()=>setopenButton(false)} className='pb-2'>
           <NavLink to={'Brands'} className="  text-gray-900    ">Brands</NavLink>
         </li>
        
