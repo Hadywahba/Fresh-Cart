@@ -17,7 +17,7 @@ export default {
     },
     extend: {
 colors :{
-  "main": "#0aad0a",
+  "main": "#9675FA",
 }
 
     },

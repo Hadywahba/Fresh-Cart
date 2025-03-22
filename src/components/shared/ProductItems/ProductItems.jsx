@@ -19,7 +19,7 @@ export default function ProductItems(props) {
     <>
       <div className="md:w-1/2 lg:w-1/4 xl:w-1/6 px-3 relative ">
         <button className='absolute right-7 top-3 text-xl z-50' onClick={() => favourite ? removeWishlist(id) : addToWishlist(props.products)}>
-          <i class={`fa-solid fa-heart ${favourite ? 'text-red-700' : 'text-gray-900'} bg-red-200 p-2`}></i>
+          <i class={`fa-solid fa-heart ${favourite ? 'text-red-600' : 'text-gray-900'} bg-violet-300 p-1`}></i>
         </button>
         <div className="product mb-8  ">
           <Link to={`/ProductDetails/${id}/${category._id}`}>

@@ -59,7 +59,7 @@ let{wishlist , wishlistColor ,removeWishlist ,addToWishlist}=useContext(Wishlist
 
     <div className='relative'>
     <button className='absolute right-7 top-5 text-xl z-50' onClick={()=> favourite ? removeWishlist(item.id) : addToWishlist(item)} >
-    <i class={`fa-solid fa-heart  ${favourite ?'text-red-800' :' text-gray-900'} bg-red-200 p-2`}></i>
+    <i class={`fa-solid fa-heart  ${favourite ?'text-red-600' :' text-gray-900'} bg-violet-300 p-1`}></i>
      </button>
     <Link to={`/ProductDetails/${item.id}/${item.category._id}`}>
     <div className='relative'>

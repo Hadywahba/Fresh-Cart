@@ -82,13 +82,13 @@ export default function Navbar() {
   <>
    <li>
           <span onClick={gotoWishlist}  className="block relative cursor-pointer  text-gray-900    "><i class="fa-solid  cursor-pointer text-lg fa-heart"></i>
-          {WishlistCount ==0 ? '' :  <div className="absolute inline-flex items-center  justify-center w-5 h-5 text-xs  text-white  bg-red-500 border-2 border-white rounded-full -top-3 -end-3 dark:border-gray-900">{WishlistCount}</div>}
+          {WishlistCount ==0 ? '' :  <div className="absolute inline-flex items-center  justify-center w-5 h-5 text-xs  text-white  bg-main border-2 border-white rounded-full -top-3 -end-3 dark:border-gray-900">{WishlistCount}</div>}
           </span>
         </li>
  
    <li>
-   <span onClick={gotoCart}  className="block relative cursor-pointer  text-gray-900    " aria-current="page"><i class="fa-solid text-main fa-cart-shopping"></i>
-{cartCount ==0 ? '' :  <div className="absolute inline-flex items-center  justify-center w-5 h-5 text-xs  text-white bg-red-500 border-2 border-white rounded-full -top-3 -end-3 dark:border-gray-900">{cartCount}</div>}
+   <span onClick={gotoCart}  className="block relative cursor-pointer  text-gray-900    " aria-current="page"><i class="fa-solid text-gray-900 fa-cart-shopping"></i>
+{cartCount ==0 ? '' :  <div className="absolute inline-flex items-center  justify-center w-5 h-5 text-xs  text-white bg-main border-2 border-white rounded-full -top-3 -end-3 dark:border-gray-900">{cartCount}</div>}
  
    </span>
  </li>
