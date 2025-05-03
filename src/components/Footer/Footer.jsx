@@ -1,21 +1,19 @@
-import React, { useState } from 'react'
+
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import img1 from '../../assets/images/google-play-badge-DdS2zTTO.svg'
 import img2 from '../../assets/images/download-on-the-app-store-CAFbHYsm.svg'
 import img3 from '../../assets/images/amazon_card_cash_icon-B91Ydq-A.svg'
 import img4 from '../../assets/images/amex-svgrepo-com-tP3OcVRO.svg'
 import img5 from '../../assets/images/mastercard_payment_icon-iPPXQmKW.svg'
-import style from './Footer.module.css'
-import { useEffect } from 'react'
 export default function Footer() {
  
   return (
 
     <>
-  <footer className='bg-[rgb(242,242,248)]  mx-auto min-w-full border-t border-gray-200/60 px-6 pt-5 pb-6    '>
+  <footer className='bg-[rgb(242,242,248)]  mx-auto min-w-full border-t border-gray-200/60 px-6 pt-5 pb-6   dark:bg-gray-900   '>
     <div className=" ">
-    <h2 className=' text-lg sm:text-2xl text-[#212529]'>Get the FreshCart app</h2>
-    <p className='text-[#6d767e] mb-4 '>We will send you a link,open it on your phone to download the app.</p>
+    <h2 className=' text-lg sm:text-2xl text-[#212529] dark:text-white'>Get the FreshCart app</h2>
+    <p className='text-[#6d767e] mb-4 dark:text-white '>We will send you a link,open it on your phone to download the app.</p>
     <div className=" flex flex-col  sm:flex-row  sm:gap-2 mb-5 ">
    <input className="bg-gray-50 border mb-4 sm:mb-0 grow border-gray-300 text-gray-900 text-sm rounded-lg  block p-2.5  dark:placeholder-gray-400" placeholder="Email..." required />
 
@@ -52,32 +50,32 @@ export default function Footer() {
 
   <li>
     <a className='insta'  href="https://www.instagram.com/">
-      <i className=' fa-brands fa-instagram'></i>
+      <i className=' fa-brands fa-instagram dark:bg-white p-1 rounded-md'></i>
     </a>
   </li>
   <li>
     <a className='facebook' href="https://www.facebook.com/">
-      <i className=' fa-brands fa-facebook'></i>
+      <i className=' fa-brands fa-facebook dark:bg-white p-1 rounded-md'></i>
     </a>
   </li>
   <li>
     <a className='tiktok' href="https://www.tiktok.com/">
-      <i className=' fa-brands fa-tiktok'></i>
+      <i className=' fa-brands fa-tiktok dark:bg-white p-1 rounded-md'></i>
     </a>
   </li>
   <li>
     <a className='twitter' href="https://www.twitter.com/">
-      <i className=' fa-brands fa-twitter'></i>
+      <i className=' fa-brands fa-twitter dark:bg-white p-1 rounded-md'></i>
     </a>
   </li>
   <li>
     <a className='linkedin' href="https://www.linkedin.com/">
-      <i className=' fa-brands fa-linkedin'></i>
+      <i className=' fa-brands fa-linkedin dark:bg-white p-1 rounded-md'></i>
     </a>
   </li>
   <li>
     <a className='youtube' href="https://www.youtube.com/">
-      <i className=' fa-brands fa-youtube'></i>
+      <i className=' fa-brands fa-youtube dark:bg-white  p-1 rounded-md'></i>
     </a>
   </li>
 </ul>

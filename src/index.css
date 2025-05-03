@@ -41,7 +41,7 @@ scroll-padding-top:220px ;
   padding: 10px;
 }
 .cart:hover{
-  box-shadow: rgba(150, 117, 250, 0.447) 0px 0px 13px 2px ;
+  box-shadow: rgba(150, 117, 250, 0.447) 8px 8px 13px 5px,rgba(150, 117, 250, 0.447) 0px 4px 5px 0px,rgba(150, 117, 250, 0.447) 0px 1px 10px 0px  ;
 }
 .loader {
     width: 60px;
@@ -57,7 +57,7 @@ scroll-padding-top:220px ;
     inset: 0px;
     border-radius: 50%;
     border: 5px solid #FFF;
-    animation: prixClipFix 2s linear infinite ;
+    animation: prixClipFix 2s linear infinite  ; 
   }
   .loader::after{
     transform: rotate3d(90, 90, 0, 180deg );
@@ -119,8 +119,9 @@ color: #1DA1F2;
    overflow: hidden;
   }
   .Category-cart:hover{
-    box-shadow: rgba(150, 117, 250, 2) 0px 0px 20px 2px ;
-    transform: scale(1);
+    box-shadow: rgba(150, 117, 250, 0.447) 8px 8px 13px 5px,rgba(150, 117, 250, 0.447) 0px 4px 5px 0px,rgba(150, 117, 250, 0.447) 0px 1px 10px 0px  ;
+    transform: scale(1.1);
+    overflow: hidden;
   }
 
 
@@ -131,4 +132,14 @@ color: #1DA1F2;
   }
   .ratio-4x3 {
     --bs-aspect-ratio: 75%;
+}
+
+.toggle-checkbox:checked {
+  @apply: right-0 border-green-400;
+  right: 0;
+  border-color: #68D391;
+}
+.toggle-checkbox:checked + .toggle-label {
+  @apply: bg-green-400;
+  background-color: #68D391;
 }

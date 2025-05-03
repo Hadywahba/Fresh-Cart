@@ -1,7 +1,5 @@
-import React, { useState } from 'react'
+
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import style from '../NotFound/NotFound.module.css'
-import { useEffect } from 'react'
 import NotFoundImage from '../../assets/images/error.svg'
 export default function NotFound() {
  

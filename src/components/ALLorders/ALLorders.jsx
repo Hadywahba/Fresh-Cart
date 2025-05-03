@@ -1,16 +1,14 @@
-import React, { useContext, useState } from 'react'
+import  {  useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import gif1 from "../../assets/images/shopping-cart (1).gif"
-import gif2 from "../../assets/images/shopping-cart.gif"
 import { useEffect } from 'react'
-import { OrderContext } from '../context/Order/OrderContex'
+
 import axios from 'axios'
 import { jwtDecode } from 'jwt-decode'
 import { Link } from 'react-router-dom'
 export default function AlLorders() {
  
 let[orderItems , setOrderItems]=useState([])
-let[order , setOrder]=useState([])
+
 const {id} = jwtDecode( localStorage.getItem("getToken"));
 
    async function getUserOrder(id){
@@ -125,7 +123,7 @@ const {id} = jwtDecode( localStorage.getItem("getToken"));
   </table>
  
 </div>
-<Link to={'/'} className='bg-main p-3 my-8 text-white text-xl rounded-md text-center     inline-block'>go back</Link>
+<Link to={'/'} className='bg-main p-3 my-8 text-white text-xl rounded-md text-center dark:text-white     inline-block'>go back</Link>
       </> : ''}
       
 

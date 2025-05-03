@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import style from '../Register/Register.module.css'
-import { useEffect } from 'react'
+
+
 import { useFormik } from 'formik'
 import axios from 'axios'
 import { BeatLoader } from 'react-spinners'
@@ -100,7 +100,7 @@ onSubmit : registerApi
 
 <form  onSubmit={formikRegister.handleSubmit} className="mx-auto max-w-2xl px-8 py-14">
   <h1 className='text-main text-3xl sm:text-5xl text-center font-semibold pt-6'>Register Now</h1>
-  {ApiError ? <div class="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+  {ApiError ? <div className="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 {ApiError}
 </div> : ''}
   <div className="relative z-0 w-full my-2 group">
@@ -109,7 +109,7 @@ onSubmit : registerApi
 
   
    {
-formikRegister.errors.name && formikRegister.touched.name ?   <div class="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+formikRegister.errors.name && formikRegister.touched.name ?   <div className="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 {formikRegister.errors.name}
 </div> : ''
    }
@@ -120,7 +120,7 @@ formikRegister.errors.name && formikRegister.touched.name ?   <div class="p-2 mt
     <label htmlFor="floating_email" className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">UserEmail</label>
 
     {
-formikRegister.errors.email && formikRegister.touched.email ?   <div class="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+formikRegister.errors.email && formikRegister.touched.email ?   <div className="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 {formikRegister.errors.email}
 </div> : ''
    }
@@ -131,7 +131,7 @@ formikRegister.errors.email && formikRegister.touched.email ?   <div class="p-2 
     <label htmlFor="floating_password" className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">UserPassword</label>
 
     {
-formikRegister.errors.password && formikRegister.touched.password ?   <div class="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+formikRegister.errors.password && formikRegister.touched.password ?   <div className="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 {formikRegister.errors.password}
 </div> : ''
    }
@@ -142,7 +142,7 @@ formikRegister.errors.password && formikRegister.touched.password ?   <div class
     <label htmlFor="floating_rePassword" className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">RePassword</label>
 
     {
-formikRegister.errors.rePassword && formikRegister.touched.rePassword ?   <div class="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+formikRegister.errors.rePassword && formikRegister.touched.rePassword ?   <div className="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 {formikRegister.errors.rePassword}
 </div> : ''
    }
@@ -153,7 +153,7 @@ formikRegister.errors.rePassword && formikRegister.touched.rePassword ?   <div c
     <label htmlFor="floating_phone" className="peer-focus:font-medium absolute text-sm text-gray-400 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-main peer-focus:dark:text-main peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">UserPhone</label>
 
     {
-formikRegister.errors.phone && formikRegister.touched.phone ?   <div class="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+formikRegister.errors.phone && formikRegister.touched.phone ?   <div className="p-2 mt-1 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
 {formikRegister.errors.phone}
 </div> : ''
    }

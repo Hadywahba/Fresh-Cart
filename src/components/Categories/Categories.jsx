@@ -1,15 +1,15 @@
-import React, { useState } from 'react'
+import  { useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
 import { useDispatch, useSelector } from 'react-redux'
-import { store } from '../../Store/store'
+
 import { getCategory } from '../../Store/categorySlice'
-import CategoriesItems from './CategoriesItems'
+
 
 import axios from 'axios'
-import SubCategory from './SubCategory'
+
 import Loader from '../Loader/Loader'
 
 
@@ -89,7 +89,7 @@ async function getSubcategory(id){
             </Helmet>
 
 <div className='container mx-auto flex-grow px-8 py-26 md:py-24'>
-  {isloadin ? <Loader/> : <div className='category-Cart grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 my-16 px-4 md:px-0'>
+  {isloadin ? <Loader/> : <div className='category-Cart grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 my-16 px-4 md:px-0'>
 
 {categorys?.data?.map(((category)=> <div  onClick={()=>{getSubcategory(category._id , ) ; setSpecificsubCategoryData(category.name ) ; setShow(true) } } className=' flex justify-center items-center flex-col border-3 Category-cart rounded-md '>
      <div className='Categorycart-img'>

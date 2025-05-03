@@ -25,5 +25,6 @@ colors :{
     
   },
   plugins: [flowbite.plugin(),heroui()],
+  darkMode:"class"
 }
 

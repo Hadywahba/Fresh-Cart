@@ -1,11 +1,11 @@
-import React, {  useContext, useState } from 'react'
+import  {  useContext, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { useEffect } from 'react'
+
  import heart from '../../assets/images/favourite.png'
 import { Helmet } from 'react-helmet'
 import { Cartcontext } from '../context/Cart/Cartcontext'
 import { WishlistContext } from '../context/Wishlist/Wishlistcontext'
-import Loader from '../Loader/Loader'
+
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 export default function Wishlist() {
@@ -31,7 +31,7 @@ let{wishlist , wishlistColor ,removeWishlist ,addToWishlist}=useContext(Wishlist
          }
          } catch (error) {
            setisload(false)
-           console.log(data);
+           console.log(error);
        
          }
         
@@ -59,7 +59,7 @@ let{wishlist , wishlistColor ,removeWishlist ,addToWishlist}=useContext(Wishlist
 
     <div className='relative'>
     <button className='absolute right-7 top-5 text-xl z-50' onClick={()=> favourite ? removeWishlist(item.id) : addToWishlist(item)} >
-    <i class={`fa-solid fa-heart  ${favourite ?'text-red-600' :' text-gray-900'} bg-violet-300 p-1`}></i>
+    <i className={`fa-solid fa-heart  ${favourite ?'text-red-600' :' text-gray-900'} bg-violet-300 p-1`}></i>
      </button>
     <Link to={`/ProductDetails/${item.id}/${item.category._id}`}>
     <div className='relative'>
