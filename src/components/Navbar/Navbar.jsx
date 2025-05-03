@@ -74,7 +74,7 @@ export default function Navbar() {
     <div className= {` ${openButton ? 'visible' : 'hidden'} md:block  w-full absolute  md:relative md:top-0 top-[56px]  left-0  md:w-auto`} >
    {token ?   
    <>
-   <ul className={   ` font-xl   md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4 border  rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  `}>
+   <ul className={   ` font-xl  bg-[rgb(242,242,248)] dark:bg-gray-900 dark:md:bg-gray-900  md:bg-[rgb(242,242,248)]   md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4   rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  `}>
         <li onClick={()=>setopenButton(false)} className='pb-2  '>
           <NavLink to={''} className="   text-gray-900 dark:text-white  " aria-current="page">Home</NavLink>
         </li>
