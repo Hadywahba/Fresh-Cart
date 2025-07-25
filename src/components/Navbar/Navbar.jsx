@@ -2,7 +2,7 @@ import  { useContext, useRef, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 
 import { useEffect } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/images/freshcart-logo.svg'
 import { Tokencontext } from '../context/Tokencontext'
@@ -10,9 +10,8 @@ import { Cartcontext } from '../context/Cart/Cartcontext'
 import { WishlistContext } from '../context/Wishlist/Wishlistcontext'
 
 
-export default function Navbar() {
-  const ref = useRef(null)
-  const[darkMode , setdarkMode]=useState(false)
+export default function Navbar({darkmode , togglemode}) {
+  
   let {token , setToken}=useContext(Tokencontext)
   let navigate = useNavigate()
   let[openButton , setopenButton]=useState(false)
@@ -27,17 +26,7 @@ export default function Navbar() {
     }
   }, [])
 
-  function DarkMode(){
-    const mode = !darkMode ;
-    setdarkMode(mode)
-    if(mode){
-      document.documentElement.classList.add("dark");
-      localStorage.setItem('theme', 'dark')
-    }else{
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem('theme', 'light')
-    }
-  }
+ 
   
   function changeSign(){
     localStorage.removeItem("getToken");
@@ -65,18 +54,18 @@ export default function Navbar() {
     
 
 
- <nav className="bg-[rgb(242,242,248)]  dark:bg-gray-900  ">
+ <nav className="bg-[rgb(242,242,248)]  dark:bg-gray-900 dark:text-white  ">
   <div className="  container mx-auto flex max-w-screen-2xl flex-wrap items-center justify-between px-3 py-4">
-   <div className="flex justify-center items-center gap-8 z-50 ">
-   <a href="" className="flex items-center space-x-3 rtl:space-x-reverse">
-      <img onClick={goto} className=' w-[80px]  dark:bg-white  md:w-[150px]' src={logo} alt="" />
-    </a>
+   <div className="flex justify-center items-center gap-8 md:gap-24 z-50 ">
+  
+      <Link to={"/"} className='font-bold  text-xl sm:text-3xl hover:shadow-sm-light hover:shadow-main dark:hover:shadow-2xl dark:hover:shadow-main '>FreshCart</Link>
+ 
     <div className= {` ${openButton ? 'visible' : 'hidden'} md:block  w-full absolute  md:relative md:top-0 top-[56px]  left-0  md:w-auto`} >
    {token ?   
    <>
-   <ul className={   ` font-xl  bg-[rgb(242,242,248)] dark:bg-gray-900 dark:md:bg-gray-900  md:bg-[rgb(242,242,248)]   md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4   rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  `}>
+   <ul className={   ` font-xl  bg-[rgb(242,242,248)] dark:bg-gray-900 dark:md:bg-transparent  md:bg-transparent   md:flex flex-col text-center  items-center justify-center p-4 md:p-0 mt-4   rounded-lg  md:flex-row  md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0  `}>
         <li onClick={()=>setopenButton(false)} className='pb-2  '>
-          <NavLink to={''} className="   text-gray-900 dark:text-white  " aria-current="page">Home</NavLink>
+          <NavLink to={''} className="   text-gray-900 dark:text-white " aria-current="page">Home</NavLink>
         </li>
        
         <li onClick={()=>setopenButton(false)} className='pb-2'>
@@ -111,8 +100,8 @@ export default function Navbar() {
  
    </span>
  </li>
- <button onClick={DarkMode} ref={ref}>
-  {darkMode ?  <i className="fa-solid fa-moon"></i> : <i  className="fa-solid fa-sun cursor-pointer"></i>  }
+ <button onClick={togglemode} >
+  {darkmode ?  <i className="fa-solid fa-moon"></i> : <i  className="fa-solid fa-sun cursor-pointer"></i>  }
  </button>
 
  <li>
@@ -120,8 +109,8 @@ export default function Navbar() {
   </li>
  </>
   : <>
-  <button onClick={DarkMode} ref={ref}>
-  {darkMode ?  <i className="fa-solid fa-moon"></i> : <i  className="fa-solid fa-sun cursor-pointer"></i>  }
+  <button onClick={togglemode} >
+  {darkmode ?  <i className="fa-solid fa-moon"></i> : <i  className="fa-solid fa-sun cursor-pointer"></i>  }
  </button>
   <li>
    <NavLink to={'Login'}>Login</NavLink>

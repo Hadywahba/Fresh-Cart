@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import{ useContext, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useEffect } from 'react'
 import axios from 'axios'
@@ -6,8 +6,6 @@ import ProductItems from '../../../shared/ProductItems/ProductItems'
 import Loader from '../../../Loader/Loader'
 import { Cartcontext } from '../../../context/Cart/Cartcontext'
 import { toast } from 'react-toastify'
-import { WishlistContext } from '../../../context/Wishlist/Wishlistcontext'
-import Products from '../../../Products/Products'
 import ReactPaginate from 'react-paginate'
 import { Tokencontext } from '../../../context/Tokencontext'
 import { useNavigate } from 'react-router-dom'
@@ -68,11 +66,8 @@ console.log(error)
   useEffect(() => {
    
       getData()
-  
-  
 
-
-  }, [defaultpage , ])
+  }, [defaultpage])
 
   return (
 

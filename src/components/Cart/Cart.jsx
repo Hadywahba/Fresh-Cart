@@ -11,10 +11,10 @@ async function deleteProduct(id){
  let data = await removeProduct(id)
  console.log(data)
 }
-async function updateItems(id , count){
-  let data = await updateProduct(id , count)
-  console.log(data)
- }
+// async function updateItems(id , count){
+//   let data = await updateProduct(id , count)
+//   console.log(data)
+//  }
 
  async function clearAll(){
   let data = await clearItems()
@@ -88,7 +88,7 @@ async function updateItems(id , count){
         </td>
         <td className="px-6 py-4">
           <div className="flex items-center">
-            <button onClick={()=> updateItems(product.product._id , product.count-1 )} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border  border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-white " type="button">
+            <button onClick={()=> updateProduct(product.product._id , product.count-1 )} className="inline-flex items-center justify-center p-1 me-3 text-sm font-medium h-6 w-6 text-gray-500 bg-white border  border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-white " type="button">
               <span className="sr-only">Quantity button</span>
               <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M1 1h16" />
@@ -97,7 +97,7 @@ async function updateItems(id , count){
             <div>
            <span>{product.count}</span>
             </div>
-            <button onClick={()=> updateItems(product.product._id , product.count+1 )}  className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-white" type="button">
+            <button onClick={()=> updateProduct(product.product._id , product.count+1 )}  className="inline-flex items-center justify-center h-6 w-6 p-1 ms-3 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-white dark:border-white" type="button">
               <span className="sr-only">Quantity button</span>
               <svg className="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
                 <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 1v16M1 9h16" />

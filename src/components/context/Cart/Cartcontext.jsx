@@ -92,11 +92,7 @@ async function clearItems(){
 async function updateProduct(id , count){
   try {
     let {data} = await axios.put(`${api_URL}/${id}`,{count} , {headers})
-    if(data.status=="success"){
-    setProductCart(data.data)
-    setCartCount(data.numOfCartItems)
-    setTotalPrice(data.totalCartPrice)
-    }
+    
     return data ;
   } catch (error) {
     console.log(error)

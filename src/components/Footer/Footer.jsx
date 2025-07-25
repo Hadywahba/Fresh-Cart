@@ -10,7 +10,7 @@ export default function Footer() {
   return (
 
     <>
-  <footer className='bg-[rgb(242,242,248)]  mx-auto min-w-full border-t border-gray-200/60 px-6 pt-5 pb-6   dark:bg-gray-900   '>
+  <footer className='bg-[rgb(242,242,248)]  mx-auto min-w-full  px-6 pt-5 pb-6   dark:bg-gray-900   '>
     <div className=" ">
     <h2 className=' text-lg sm:text-2xl text-[#212529] dark:text-white'>Get the FreshCart app</h2>
     <p className='text-[#6d767e] mb-4 dark:text-white '>We will send you a link,open it on your phone to download the app.</p>
@@ -19,7 +19,7 @@ export default function Footer() {
 
 <button className=' py-2 sm:py-0 bg-main text-white rounded-md px-6'>Share App Link</button>
     </div>
-    <div className=" pt-4 border-t-2  ">
+    <div className=" pt-4 border-t-2 dark:border-gray-500 border-gray-300 ">
    <div className='flex flex-col gap-3 text-center sm:flex sm:flex-row sm:justify-between sm:items-center '>
    
    <div className="   payment ">
@@ -32,7 +32,7 @@ export default function Footer() {
       </div>
    </div >
     </div>
-    <div className='border-b-2 sm:border-b-2 flex flex-col justify-center items-center  sm:flex sm:flex-row sm:justify-center sm:items-center'>
+    <div className='border-b-2 sm:border-b-2 dark:border-gray-500 border-gray-300 flex flex-col justify-center items-center  sm:flex sm:flex-row sm:justify-center sm:items-center'>
     <div className=' flex justify-center items-center gap-4  pt-4 '>
     <img className=' w-[50px] xl:w-[125px]' src={img2} alt="google app" />
     <img className='  w-[50px]  xl:w-[125px]' src={img1} alt="play store" />

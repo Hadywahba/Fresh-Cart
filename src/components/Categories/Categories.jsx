@@ -91,7 +91,7 @@ async function getSubcategory(id){
 <div className='container mx-auto flex-grow px-8 py-26 md:py-24'>
   {isloadin ? <Loader/> : <div className='category-Cart grid sm:grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-10 my-16 px-4 md:px-0'>
 
-{categorys?.data?.map(((category)=> <div  onClick={()=>{getSubcategory(category._id , ) ; setSpecificsubCategoryData(category.name ) ; setShow(true) } } className=' flex justify-center items-center flex-col border-3 Category-cart rounded-md '>
+{categorys?.data?.map(((category)=> <div  onClick={()=>{getSubcategory(category._id) ; setSpecificsubCategoryData(category.name ) ; setShow(true) } } className=' flex justify-center items-center flex-col border-3 Category-cart rounded-md '>
      <div className='Categorycart-img'>
        <img className='w-screen h-[400px]'  src={category.image} alt="" />
      </div>
@@ -105,9 +105,6 @@ async function getSubcategory(id){
  </div>}
 
  
-  
- <div>
- </div>
   {loader? <Loader/> : <>
     {show ?  <h1 className='text-center text-main text-2xl sm:text-4xl  md:px-0'> {SpecificsubCategoryData} subcategories</h1> : ''}  
  

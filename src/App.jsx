@@ -1,6 +1,4 @@
 import { useContext, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Home from './components/Home/Home'
@@ -8,9 +6,7 @@ import Brands from './components/Brands/Brands'
 import Cart from './components/Cart/Cart'
 import Categories from './components/Categories/Categories'
 import Layout from './components/Layout/Layout'
-import Footer from './components/Footer/Footer'
 import Login from './components/Login/Login'
-import Navbar from './components/Navbar/Navbar'
 import NotFound from './components/NotFound/NotFound'
 import Products from './components/Products/Products'
 import Register from './components/Register/Register'
@@ -26,21 +22,33 @@ import Auth from './components/context/Auth/Auth'
 import ForgetPassword from './components/ForgetPassword/ForgetPassword'
 import ResetPassword from './components/ResetPassword/ResetPassword'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import {  PulseLoader } from 'react-spinners'
 
 
 
 
 export default function App() {
 
+  const[isloading , setisloading]=useState(true)
 let {Token , setToken} = useContext(Tokencontext)
 
+// handling loading
+
+useEffect(()=>{
+ const time = setTimeout(()=>setisloading(false),2000)
+  return()=>clearTimeout(time)
+})
+
+// handling loading
+
+// handling token in refresh
 useEffect(() => {
  if (localStorage.getItem("getToken")){
   setToken(localStorage.getItem("getToken"))
  }
 }, [])
 
-
+// handling token in refresh
 
  const router= createBrowserRouter([
   {path: "" , element: <Layout/> , children :[
@@ -64,9 +72,17 @@ useEffect(() => {
 
   return (
     <>
+{isloading ? <>
 
+ <div className="flex items-center justify-center h-screen bg-black">
+      <PulseLoader color="#9675FA"  size={40} />
+      </div>
+</> : <>
 <RouterProvider router={router}/>
 <ToastContainer/>
+
+</>}
+
     </>
   )
 }
