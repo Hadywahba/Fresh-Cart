@@ -57,18 +57,24 @@ export default function Products() {
           },
         }
       );
-      setproduct(data.data);
+ console.log(data.data);
+      const searched = data.data.filter((items) =>
+      items.title.toLowerCase().includes(searchVlalue.toLowerCase())
+    );
+      setproduct(searched);
+
+
+
+
     } catch (error) {
       console.log(error);
       throw error
     }
   }
 
-  const searcheditems = useMemo(() => {
-    return product.filter((items) =>
-      items.category.name.toLowerCase().includes(searchVlalue.toLowerCase())
-    );
-  }, [product, searchVlalue, sort]);
+ 
+    
+
 
   const handleinput = (e) => {
     setsearchVlalue(e.target.value);
@@ -82,7 +88,7 @@ export default function Products() {
 
   useEffect(() => {
     getProduct();
-  }, []);
+  }, [searchVlalue ,sort ]);
 
   return (
     <>
@@ -164,9 +170,9 @@ export default function Products() {
           </select>
         </div>
 
-        {searcheditems.length != 0 ? (
+        {product.length != 0 ? (
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6  gap-9  mt-5 px-4  ">
-            {searcheditems?.map((product) => {
+            {product?.map((product) => {
               const favourite = wishlistColor(product.id);
 
               return (
