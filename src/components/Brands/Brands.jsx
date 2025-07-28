@@ -18,6 +18,7 @@ let[selectedBrand3 , setselectedBrand3]=useState([])
 let dispatch = useDispatch()
 
   let {data ,isLoading } =useSelector((store=>store.brand))
+  console.log(data)
  
 useEffect(() => {
   dispatch(getBrands())

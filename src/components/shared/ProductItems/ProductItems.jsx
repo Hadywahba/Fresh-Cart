@@ -1,14 +1,11 @@
-import React, { useContext, useState } from 'react'
+import  { useContext, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Cartcontext } from '../../context/Cart/Cartcontext'
-import Products from '../../Products/Products'
 import { WishlistContext } from '../../context/Wishlist/Wishlistcontext'
 export default function ProductItems(props) {
   let { addProduct, isloading } = useContext(Cartcontext)
   let { removeWishlist, addToWishlist, wishlistColor } = useContext(WishlistContext)
-  let { loadingProduct } = props
   let[currentProductId, setcurrentProductId]=useState('')
   let { title, price, ratingsAverage, category, imageCover, id } = props.products
 

@@ -1,27 +1,22 @@
-import { useContext, useState } from "react";
+import { useContext, useMemo, useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-
 import { useEffect } from "react";
 import axios from "axios";
 import { Cartcontext } from "../context/Cart/Cartcontext";
-
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import Loader from "../Loader/Loader";
-
 import { WishlistContext } from "../context/Wishlist/Wishlistcontext";
 import { Helmet } from "react-helmet";
 export default function Products() {
   let [product, setproduct] = useState([]);
-  let [pages, setpages] = useState([]);
-  let [searchData, setsearchData] = useState([]);
-  let [defaultpage, setdefaultpage] = useState(1);
   let [isload, setisload] = useState(false);
   let [isloaded, setisloaded] = useState(false);
+  let[productid , setproductid]=useState("")
   let [sort, setsort] = useState("title");
   let [searchVlalue, setsearchVlalue] = useState("");
   let { addProductTocart } = useContext(Cartcontext);
-  let { removeWishlist, addToWishlist, wishlistColor, wishlist } =
+  let { removeWishlist, addToWishlist, wishlistColor } =
     useContext(WishlistContext);
   // ADD Product to cart
   // console.log(wishlist)
@@ -46,6 +41,7 @@ export default function Products() {
       }
     } catch (error) {
       setisload(false);
+      throw error
     }
   }
 
@@ -61,19 +57,19 @@ export default function Products() {
           },
         }
       );
-      let res = data.data.filter((items) => {
-        return items.category.name
-          .toLowerCase()
-          .includes(searchVlalue.toLowerCase());
-      });
-      console.log(res);
-
-      console.log(data.data);
-      setproduct(res);
+      setproduct(data.data);
     } catch (error) {
       console.log(error);
+      throw error
     }
   }
+
+  const searcheditems = useMemo(() => {
+    return product.filter((items) =>
+      items.category.name.toLowerCase().includes(searchVlalue.toLowerCase())
+    );
+  }, [product, searchVlalue, sort]);
+
   const handleinput = (e) => {
     setsearchVlalue(e.target.value);
     // getProduct()
@@ -86,7 +82,7 @@ export default function Products() {
 
   useEffect(() => {
     getProduct();
-  }, [sort, searchVlalue]);
+  }, []);
 
   return (
     <>
@@ -168,9 +164,9 @@ export default function Products() {
           </select>
         </div>
 
-        {product.length != 0 ? (
+        {searcheditems.length != 0 ? (
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6  gap-9  mt-5 px-4  ">
-            {product?.map((product) => {
+            {searcheditems?.map((product) => {
               const favourite = wishlistColor(product.id);
 
               return (
@@ -216,10 +212,11 @@ export default function Products() {
                     <button
                       onClick={() => {
                         addProduct(product.id);
+                        setproductid(product.id)
                       }}
                       className="btn bg-main w-full p-3 rounded-md my-3 font-bold text-neutral-50 opacity-85"
                     >
-                      {isload ? (
+                      {isload && productid==product.id ? (
                         <i className="fa-solid fa-spinner fa-spin text-center text-white"></i>
                       ) : (
                         <span>Add to Card</span>

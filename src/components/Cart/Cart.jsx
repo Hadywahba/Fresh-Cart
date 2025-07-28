@@ -40,7 +40,8 @@ async function deleteProduct(id){
 
             <div className='container mx-auto flex-grow px-8 py-26 md:py-24'> 
 
-  {productCart?.data?.products.length==0 ? <div className='flex flex-col gap-5 items-center justify-center mb-10 text-center'>
+  {productCart?.data?.products.length==0 ?
+   <div className='flex flex-col gap-5 items-center justify-center mb-10 text-center'>
     <img className='w-[200px] ' src={gif1} alt="" />
     <h1 className=' text-2xl sm:text-4xl text-center font-serif font-bold '>Your cart is Empty </h1>
  
