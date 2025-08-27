@@ -1,50 +1,40 @@
-import React, { useState } from 'react'
-import '@fortawesome/fontawesome-free/css/all.min.css'
-import style from './Staticslider.module.css'
-import { useEffect } from 'react'
-import Slider1 from '../../../../assets/CategoriesProductImages/slider-image-1.jpeg'
-import Slider2 from '../../../../assets/CategoriesProductImages/slider-image-2.jpeg'
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import Slider2 from '../../../../assets/images/cannon.jpg'
 import Slider3 from '../../../../assets/CategoriesProductImages/slider-image-3.jpeg'
-import Slider4 from '../../../../assets/CategoriesProductImages/slider-2.jpeg'
-import staticslider1 from '../../../../assets/CategoriesProductImages/grocery-banner.png'
-import staticslider2 from '../../../../assets/CategoriesProductImages/grocery-banner-2.jpeg'
-import Slider from 'react-slick'
+import Slider5 from '../../../../assets/images/nike-1.jpg'
+import Slider6 from '../../../../assets/images/shyam-mishra-zuo1zb6mEcY-unsplash.jpg'
+import Slider7 from '../../../../assets/images/julian-o-hayon-Bs-zngH79Ds-unsplash.jpg'
+
 
 export default function Staticslider() {
-  const settings = {
-    dots: true,
-    infinite: true,
-    arrows:false,
-    speed: 500,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed : 1000,
-    
-  };
+   const slides = [Slider7 ,Slider5,Slider6,Slider2,Slider3];
+
   return (
-
-   <div className="container px-5 py-8">
-     <div className=' grid grid-cols-12 text-center '>
-  <div className='  col-span-12 sm:col-span-8'>
-  <Slider  {...settings} className='my-11 '>
-<img src={Slider2} className='h-[400px] w-full'  alt="" />
-<img src={Slider3} className='h-[400px] w-full' alt="" />
-<img src={Slider4} className='h-[400px] w-full' alt="" />
-      </Slider>
-
-  </div>
-
-
-  <div className=" col-span-12 sm:col-span-4 pt-11 ">
- 
-    <img src={staticslider1} className='h-[200px] w-full' alt="" />
-    <img src={staticslider2} className='h-[200px] w-full' alt="" />
-    
-   
-
-  </div>
+    <div className="w-full h-[200px] sm:h-[350px] md:h-[500px] lg:h-[600px]  my-8">
+      <Swiper
+        modules={[Navigation, Pagination, Autoplay]}
+        navigation
+        pagination={{ clickable: true }}
+        autoplay={{ delay: 2000 }}
+        loop={true}
+        
+        className="w-full h-full rounded-2xl shadow-lg"
+      >
+        {slides.map((img, index) => (
+          <SwiperSlide key={index}>
+            <img
+              src={img}
+              alt={`Slide ${index + 1}`}
+              className="w-full h-full object-cover rounded-2xl"
+            />
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      
     </div>
-   </div>
-  )
+  );
 }

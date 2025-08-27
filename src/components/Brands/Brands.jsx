@@ -1,30 +1,35 @@
 import  { useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-
-import { useEffect } from 'react'
 import { Helmet } from 'react-helmet'
-
-import { useDispatch, useSelector } from 'react-redux'
-
-import { getBrands } from '../../Store/brandSlice'
 import Loader from '../Loader/Loader'
+import { useQuery } from '@tanstack/react-query'
+import axios from 'axios'
 export default function Brands() {
-
-
 let[displayModal , setdisplayModal]=useState(false)
 let[selectedBrand1 , setselectedBrand1]=useState([])
 let[selectedBrand2 , setselectedBrand2]=useState([])
 let[selectedBrand3 , setselectedBrand3]=useState([])
-let dispatch = useDispatch()
 
-  let {data ,isLoading } =useSelector((store=>store.brand))
-  console.log(data)
- 
-useEffect(() => {
-  dispatch(getBrands())
 
- 
-}, [])
+const getBrands = async () => {
+  const { data } = await axios.get("https://ecommerce.routemisr.com/api/v1/brands");
+  return data;
+};
+
+
+const {data , isLoading} =useQuery({
+  queryKey:['brands'],
+  queryFn:getBrands,
+  select:(data)=>data?.data
+
+})
+
+
+
+
+
+
+
 
 
 function openModal(item1 , item2 , item3){
@@ -57,7 +62,7 @@ function closeModal(){
 {isLoading ? <Loader/> : 
 
 <div className='grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-9 my-8'>
-{data?.data.map((brands=>
+{data?.map((brands=>
    <div onClick={()=>openModal(brands.image ,brands.name , brands.slug)}  key={brands._id}  className=" border-2 border-gray-200  hover:scale-105 cart  ">
   <div  className=' flex flex-col items-center justify-center'>
   <div className='cart-img'>

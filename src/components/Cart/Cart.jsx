@@ -11,10 +11,6 @@ async function deleteProduct(id){
  let data = await removeProduct(id)
  console.log(data)
 }
-// async function updateItems(id , count){
-//   let data = await updateProduct(id , count)
-//   console.log(data)
-//  }
 
  async function clearAll(){
   let data = await clearItems()

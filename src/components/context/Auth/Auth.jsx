@@ -1,13 +1,9 @@
-import React from 'react'
-import { Navigate } from 'react-router-dom'
-import Home from '../../Home/Home'
+import { Navigate } from "react-router-dom";
 
 export default function Auth(props) {
-    if(localStorage.getItem("getToken")){
-        return <Navigate to={'/'}  />
-    }
-    else{
-        return props.children
-    }
-
+  if (localStorage.getItem("getToken")) {
+    return <Navigate to={"/"} />;
+  } else {
+    return props.children;
+  }
 }

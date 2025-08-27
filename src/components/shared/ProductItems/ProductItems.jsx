@@ -4,10 +4,11 @@ import { Link } from 'react-router-dom'
 import { Cartcontext } from '../../context/Cart/Cartcontext'
 import { WishlistContext } from '../../context/Wishlist/Wishlistcontext'
 export default function ProductItems(props) {
-  let { addProduct, isloading } = useContext(Cartcontext)
+  let { isloading } = useContext(Cartcontext)
   let { removeWishlist, addToWishlist, wishlistColor } = useContext(WishlistContext)
   let[currentProductId, setcurrentProductId]=useState('')
-  let { title, price, ratingsAverage, category, imageCover, id } = props.products
+  let { title, price, ratingsAverage, category, imageCover, id , 
+sold , quantity} = props.products
 
 
 
@@ -15,6 +16,8 @@ export default function ProductItems(props) {
   return (
     <>
       <div className="md:w-1/2 lg:w-1/4 xl:w-1/6 px-3 relative ">
+    
+          <span className='bg-red-200 text-black absolute left-7 top-3 z-50 text-xs font-medium me-2 px-2.5 py-0.5 rounded-sm dark:bg-main  '>{quantity}</span>
         <button className='absolute right-7 top-3 text-xl z-50' onClick={() => favourite ? removeWishlist(id) : addToWishlist(props.products)}>
           <i className={`fa-solid fa-heart ${favourite ? 'text-red-600' : 'text-gray-900'} bg-violet-300 p-1`}></i>
         </button>
@@ -25,8 +28,8 @@ export default function ProductItems(props) {
 
             </div>
 
-            <p className='text-main'>{category.name}</p>
-            <h2 className='font-bold mb-4 text-2xl'>{title.split(' ').splice(0, 2).join(" ")}</h2>
+            <p className='text-main text-balance'>{category.name}</p>
+            <h2 className='font-bold mb-4 text-xl'>{title.split(' ').splice(1, 2).join(" ")}</h2>
             <div className="flex justify-between">
               <span>{price} EGP</span>
               <span>

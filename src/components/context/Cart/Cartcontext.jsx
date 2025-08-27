@@ -13,7 +13,6 @@ export default function CartcontextProvider(props) {
   let[cartId , setcartId]=useState([])
  const {token}=useContext(Tokencontext)
 const api_URL="https://ecommerce.routemisr.com/api/v1/cart"
-const API_UPDATE = "https://ecommerce.routemisr.com/api/v1/cart/6428ebc6dc1175abc65ca0b9"
 const headers={
   token 
 }
@@ -51,7 +50,8 @@ async function getUserCart(){
     
     return data
   } catch (error) {
-   
+   console.log(error)
+   throw error
   }
 }
  async function removeProduct(id){

@@ -1,6 +1,6 @@
-import { useContext, useMemo, useState } from "react";
+import { useContext, useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
-import { useEffect } from "react";
+
 import axios from "axios";
 import { Cartcontext } from "../context/Cart/Cartcontext";
 import { Link } from "react-router-dom";
@@ -8,11 +8,11 @@ import { toast } from "react-toastify";
 import Loader from "../Loader/Loader";
 import { WishlistContext } from "../context/Wishlist/Wishlistcontext";
 import { Helmet } from "react-helmet";
+import { useQuery } from "@tanstack/react-query";
 export default function Products() {
-  let [product, setproduct] = useState([]);
   let [isload, setisload] = useState(false);
-  let [isloaded, setisloaded] = useState(false);
-  let[productid , setproductid]=useState("")
+  let [productid, setproductid] = useState("");
+    let { isloading } = useContext(Cartcontext)
   let [sort, setsort] = useState("title");
   let [searchVlalue, setsearchVlalue] = useState("");
   let { addProductTocart } = useContext(Cartcontext);
@@ -41,54 +41,43 @@ export default function Products() {
       }
     } catch (error) {
       setisload(false);
-      throw error
+      throw error;
     }
   }
 
   // GET Product
   async function getProduct() {
-    try {
-      setisloaded(true);
-      let { data } = await axios.get(
-        `https://ecommerce.routemisr.com/api/v1/products`,
-        {
-          params: {
-            sort,
-          },
-        }
-      );
- console.log(data.data);
-      const searched = data.data.filter((items) =>
-      items.title.toLowerCase().includes(searchVlalue.toLowerCase())
+    const { data } = await axios.get(
+      `https://ecommerce.routemisr.com/api/v1/products`,
+      {
+        params: {
+          sort,
+        },
+      }
     );
-      setproduct(searched);
-
-
-
-
-    } catch (error) {
-      console.log(error);
-      throw error
-    }
+    return data;
   }
 
- 
-    
 
+  const { data , isPending } = useQuery({
+    queryKey: ["Products",searchVlalue, sort],
+    queryFn: getProduct,
+    select:(data)=>{
+       if (!searchVlalue) return data?.data; 
+    return data?.data?.filter((item) =>
+      item.title.toLowerCase().includes(searchVlalue.toLowerCase())
+    );
+    }
+  });
 
   const handleinput = (e) => {
     setsearchVlalue(e.target.value);
-    // getProduct()
-    console.log(e.target.value);
   };
   const handleSort = (e) => {
     setsort(e.target.value);
-    getProduct();
   };
 
-  useEffect(() => {
-    getProduct();
-  }, [searchVlalue ,sort ]);
+
 
   return (
     <>
@@ -103,7 +92,7 @@ export default function Products() {
           <div className="col-span-12 w-full px-4 sm:w-[50%]   m-auto">
             <form className=" mx-auto">
               <label
-                for="default-search"
+              
                 className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
               >
                 Search
@@ -119,9 +108,7 @@ export default function Products() {
                   >
                     <path
                       stroke="currentColor"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
+                     
                       d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                     />
                   </svg>
@@ -170,9 +157,9 @@ export default function Products() {
           </select>
         </div>
 
-        {product.length != 0 ? (
+        {data?.length != 0 ? (
           <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-6  gap-9  mt-5 px-4  ">
-            {product?.map((product) => {
+            {data?.map((product) => {
               const favourite = wishlistColor(product.id);
 
               return (
@@ -203,9 +190,9 @@ export default function Products() {
                         />
                       </div>
 
-                      <p className="text-main">{product.name}</p>
-                      <h2 className="font-bold mb-4 text-2xl">
-                        {product.title.split(" ").splice(0, 2).join(" ")}
+                      <p className="text-main">{product.brand.name}</p>
+                      <h2 className="font-bold mb-4 text-xl">
+                        {product.title.split(" ").splice(1, 2).join(" ")}
                       </h2>
                       <div className="flex justify-between">
                         <span>{product.price} EGP</span>
@@ -218,11 +205,11 @@ export default function Products() {
                     <button
                       onClick={() => {
                         addProduct(product.id);
-                        setproductid(product.id)
+                        setproductid(product.id);
                       }}
                       className="btn bg-main w-full p-3 rounded-md my-3 font-bold text-neutral-50 opacity-85"
                     >
-                      {isload && productid==product.id ? (
+                      {isloading && productid == product.id ? (
                         <i className="fa-solid fa-spinner fa-spin text-center text-white"></i>
                       ) : (
                         <span>Add to Card</span>
