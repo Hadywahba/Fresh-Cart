@@ -116,7 +116,7 @@ export default function AlLorders() {
                   </p>
                   <p className="">
                     Date:
-                     {orderItems[orderItems.length - 1]?.createdAt.split("T")[0]}
+                    {orderItems[orderItems.length - 1]?.createdAt.split("T")[0]}
                   </p>
                 </div>
               </div>

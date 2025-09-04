@@ -1,10 +1,9 @@
 import  {  useContext, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-
- import heart from '../../assets/images/favourite.png'
+ import heart from '../../../assets/images/favourite.png'
 import { Helmet } from 'react-helmet'
-import { Cartcontext } from '../context/Cart/Cartcontext'
-import { WishlistContext } from '../context/Wishlist/Wishlistcontext'
+import { Cartcontext } from '../../../components/context/Cart/Cartcontext'
+import { WishlistContext } from '../../../components/context/Wishlist/Wishlistcontext'
 
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'

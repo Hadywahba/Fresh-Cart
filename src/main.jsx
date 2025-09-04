@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import "./index.css";
-import App from "./App.jsx";
+import "./styles/index.css";
+import App from "./Routes/App.jsx";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "flowbite/dist/flowbite.min.js";
 import TokencontextProvider from "./components/context/Tokencontext.jsx";
@@ -17,17 +17,17 @@ const queryClient = new QueryClient();
 createRoot(document.getElementById("root")).render(
   <>
     <QueryClientProvider client={queryClient}>
-    <Provider store={store}>
-      <TokencontextProvider>
-        <CartcontextProvider>
-          <OrderContexProvider>
-            <WishlistContextProvider>
-              <App />
-            </WishlistContextProvider>
-          </OrderContexProvider>
-        </CartcontextProvider>
-      </TokencontextProvider>
-    </Provider>
+      <Provider store={store}>
+        <TokencontextProvider>
+          <CartcontextProvider>
+            <OrderContexProvider>
+              <WishlistContextProvider>
+                <App />
+              </WishlistContextProvider>
+            </OrderContexProvider>
+          </CartcontextProvider>
+        </TokencontextProvider>
+      </Provider>
     </QueryClientProvider>
   </>
 );

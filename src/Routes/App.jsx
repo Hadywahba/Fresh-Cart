@@ -1,13 +1,11 @@
 import { Suspense, useContext, useState } from "react";
-import "./App.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Login from "./components/Login/Login";
-import Register from "./components/Register/Register";
-import ProtectRoutes from "./components/ProtectRoutes/ProtectRoutes";
-import { Tokencontext } from "./components/context/Tokencontext";
+import { Login, Register } from "../Pages/Auth";
+import ProtectRoutes from "../components/ProtectRoutes/ProtectRoutes";
+import { Tokencontext } from "../components/context/Tokencontext";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
-import Auth from "./components/context/Auth/Auth";
+import Auth from "../components/context/Auth/Auth";
 import { PulseLoader } from "react-spinners";
 import { lazy } from "react";
 
@@ -32,28 +30,49 @@ export default function App() {
   }, []);
 
   // handling token in refresh
-  const Home = lazy(() => import("./components/Home/Home"));
-  const Layout = lazy(() => import("./components/Layout/Layout"));
+  const Home = lazy(() => import("../components/Home/Home"));
+  const Layout = lazy(() => import("../Layout/Layout.jsx"));
   const ChangePassword = lazy(() =>
-    import("./components/ChangePassword/ChangePassword")
+    import("../Pages/Auth").then((module) => ({
+      default: module.ChangePassword,
+    }))
   );
   const ResetPassword = lazy(() =>
-    import("./components/ResetPassword/ResetPassword")
+    import("../Pages/Auth").then((module) => ({
+      default: module.ResetPassword,
+    }))
   );
   const ForgetPassword = lazy(() =>
-    import("./components/ForgetPassword/ForgetPassword")
+    import("../Pages/Auth").then((module) => ({
+      default: module.ForgetPassword,
+    }))
   );
-  const Wishlist = lazy(() => import("./components/Wishlist/Wishlist"));
-  const NotFound = lazy(() => import("./components/NotFound/NotFound"));
-  const Cart = lazy(() => import("./components/Cart/Cart"));
-  const Brands = lazy(() => import("./components/Brands/Brands"));
-  const Categories = lazy(() => import("./components/Categories/Categories"));
-  const AlLorders = lazy(() => import("./components/ALLorders/ALLorders"));
+
+  const Wishlist = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.Wishlist }))
+  );
+  const NotFound = lazy(() => import("../Pages/NotFound/NotFound.jsx"));
+  const Cart = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.Cart }))
+  );
+  const Brands = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.Brands }))
+  );
+  const Categories = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.Categories }))
+  );
+  const AlLorders = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.AlLorders }))
+  );
   const ProductDetails = lazy(() =>
-    import("./components/ProductDetails/ProductDetails")
+    import("../components/ProductDetails/ProductDetails")
   );
-  const Products = lazy(() => import("./components/Products/Products"));
-  const Payment = lazy(() => import("./components/Payment/Payment"));
+  const Products = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.Products }))
+  );
+  const Payment = lazy(() =>
+    import("../Pages/Main").then((module) => ({ default: module.Payment }))
+  );
 
   const router = createBrowserRouter([
     {

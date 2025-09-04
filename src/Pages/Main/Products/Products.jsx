@@ -2,17 +2,17 @@ import { useContext, useState } from "react";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 
 import axios from "axios";
-import { Cartcontext } from "../context/Cart/Cartcontext";
+import { Cartcontext } from "../../../components/context/Cart/Cartcontext";
 import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
-import Loader from "../Loader/Loader";
-import { WishlistContext } from "../context/Wishlist/Wishlistcontext";
+import Loader from "../../../components/Loader/Loader";
+import { WishlistContext } from "../../../components/context/Wishlist/Wishlistcontext";
 import { Helmet } from "react-helmet";
 import { useQuery } from "@tanstack/react-query";
 export default function Products() {
   let [isload, setisload] = useState(false);
   let [productid, setproductid] = useState("");
-    let { isloading } = useContext(Cartcontext)
+  let { isloading } = useContext(Cartcontext);
   let [sort, setsort] = useState("title");
   let [searchVlalue, setsearchVlalue] = useState("");
   let { addProductTocart } = useContext(Cartcontext);
@@ -58,16 +58,15 @@ export default function Products() {
     return data;
   }
 
-
-  const { data , isPending } = useQuery({
-    queryKey: ["Products",searchVlalue, sort],
+  const { data, isPending } = useQuery({
+    queryKey: ["Products", searchVlalue, sort],
     queryFn: getProduct,
-    select:(data)=>{
-       if (!searchVlalue) return data?.data; 
-    return data?.data?.filter((item) =>
-      item.title.toLowerCase().includes(searchVlalue.toLowerCase())
-    );
-    }
+    select: (data) => {
+      if (!searchVlalue) return data?.data;
+      return data?.data?.filter((item) =>
+        item.title.toLowerCase().includes(searchVlalue.toLowerCase())
+      );
+    },
   });
 
   const handleinput = (e) => {
@@ -76,8 +75,6 @@ export default function Products() {
   const handleSort = (e) => {
     setsort(e.target.value);
   };
-
-
 
   return (
     <>
@@ -91,10 +88,7 @@ export default function Products() {
         <div className="top-page mt-24 grid grid-cols-12 mb-8  ">
           <div className="col-span-12 w-full px-4 sm:w-[50%]   m-auto">
             <form className=" mx-auto">
-              <label
-              
-                className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-              >
+              <label className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
                 Search
               </label>
               <div className="relative">
@@ -108,7 +102,6 @@ export default function Products() {
                   >
                     <path
                       stroke="currentColor"
-                     
                       d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
                     />
                   </svg>

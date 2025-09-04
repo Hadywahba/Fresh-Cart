@@ -1,10 +1,7 @@
-import  { useContext, useRef, useState } from 'react'
+import  { useContext, useState } from 'react'
 import '@fortawesome/fontawesome-free/css/all.min.css'
-
 import { useEffect } from 'react'
 import { Link, NavLink, useNavigate } from 'react-router-dom'
-
-import logo from '../../assets/images/freshcart-logo.svg'
 import { Tokencontext } from '../context/Tokencontext'
 import { Cartcontext } from '../context/Cart/Cartcontext'
 import { WishlistContext } from '../context/Wishlist/Wishlistcontext'
